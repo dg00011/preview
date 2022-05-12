@@ -124,7 +124,7 @@ async function getAssetIDfromJob(jobID) {
 
 
 
-<a href="" id="assetId"></a>
+<a href="" id="assetId">go to the link</a>
 
     </div>
   );
