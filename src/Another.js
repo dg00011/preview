@@ -230,6 +230,9 @@ const Another = () => {
 
   return (
     <>
+    <a href="https://google.com" id="assetId">
+        go to the link
+      </a>
       <div>
         JPEG FILES ONLY
         <br />
@@ -247,9 +250,7 @@ const Another = () => {
       <div id="preview"></div>
       <div id="div"></div>
 
-      <a href="https://google.com" id="assetId">
-        go to the link
-      </a>
+      
     </>
   );
 };
