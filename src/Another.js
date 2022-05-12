@@ -28,10 +28,12 @@ const Another = () => {
       var reader = new FileReader();
       reader.onload = function (e) {
         var exif = piexif.load(e.target.result);
+
+        console.log(exif)
         var image = new Image();
         image.onload = function () {
           var orientation = exif["0th"][piexif.ImageIFD?.Orientation];
-
+            console.log(orientation);
           var canvas = document.createElement("canvas");
           canvas.width = image.width;
           canvas.height = image.height;
@@ -93,7 +95,7 @@ const Another = () => {
           var div = document.getElementById("div");
           div.append(canvas);
           const link = canvas.toDataURL();
-          console.log(link);
+        //   console.log(link);
 
           //uploadFileToThreeKit(link);
           base64ToFile(link);
