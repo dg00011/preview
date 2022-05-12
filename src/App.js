@@ -19,7 +19,7 @@ function App() {
 
  
 
-  const authToken = '835b7de9-58c6-42bd-9838-a4b05f75d5cc'; //Canvas Prints Sandbox localhost
+  const authToken = 'b11be148-7ab1-4442-8738-d6f3f56c0b88'; //Canvas Prints Sandbox localhost
  // const assetId = '73e203fa-0d97-4d92-94b3-6da57f708b73';
  const orgID = '00c181f6-4e03-411a-87fa-18a10b9f3ddb'; //Canvas Prints Sandbox
  // e2be7601-d925-4ee0-a270-be355652264d
