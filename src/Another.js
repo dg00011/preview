@@ -32,7 +32,8 @@ const Another = () => {
         console.log(exif)
         var image = new Image();
         image.onload = function () {
-          var orientation = exif["0th"][piexif.ImageIFD?.Orientation];
+           var orientation = exif["0th"][piexif.ImageIFD?.Orientation];
+        //var orientation = 6;
             console.log(orientation);
           var canvas = document.createElement("canvas");
           canvas.width = image.width;
@@ -62,7 +63,8 @@ const Another = () => {
             canvas.width = image.height;
             canvas.height = image.width;
             ctx.translate(canvas.width, canvas.height / canvas.width);
-            ctx.rotate(Math.PI / 2);
+            console.log(canvas.width, canvas.height / canvas.width,Math.PI / 2)
+//ctx.rotate(Math.PI / 2);
           } else if (orientation === 7) {
             canvas.width = image.height;
             canvas.height = image.width;
