@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "./App.css";
+import { piexif } from "piexifjs";
+import Another from "./Another";
 //import EXIF from "exif-js";
 
 function App() {
@@ -9,20 +11,18 @@ function App() {
     if (event.target.files && event.target.files[0]) {
       const url = URL.createObjectURL(event.target.files[0]);
       setsrc(url);
-
-      uploadFileToThreeKit(event.target.files[0])
+    
+      uploadFileToThreeKit( piexif.remove(event.target.files[0]))
 
       console.log("show", URL.createObjectURL(event.target.files[0]));
     }
   };
 
 
- 
 
   const authToken = 'b11be148-7ab1-4442-8738-d6f3f56c0b88'; //Canvas Prints Sandbox localhost
  // const assetId = '73e203fa-0d97-4d92-94b3-6da57f708b73';
  const orgID = '00c181f6-4e03-411a-87fa-18a10b9f3ddb'; //Canvas Prints Sandbox
- // e2be7601-d925-4ee0-a270-be355652264d
 
   
 //upload file to 3Kit CDN
@@ -110,7 +110,7 @@ async function getAssetIDfromJob(jobID) {
 
   return (
     <div className="App">
-      <input
+      {/* <input
         type="file"
         accept=".png , .jpg , .jpeg"
         name="pic"
@@ -120,9 +120,12 @@ async function getAssetIDfromJob(jobID) {
 
       <img src={src} alt="..." className="pic" />
 
+<a href="https://google.com" id="assetId">go to the link</a> */}
 
 
-<a href="https://google.com" id="assetId">go to the link</a>
+<Another/>
+
+
 
     </div>
   );
