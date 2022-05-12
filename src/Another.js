@@ -82,8 +82,8 @@ const Another = () => {
           ctx.drawImage(image, x, y);
           ctx.restore();
 
-          var dataURL = canvas.toDataURL("image/jpeg", 1.0);
-          var jpegBinary = atob(dataURL.split(",")[1]);
+         // var dataURL = canvas.toDataURL("image/jpeg", 1.0);
+          //var jpegBinary = atob(dataURL.split(",")[1]);
 
           // restore exif(remove orientation value)
           //                if (typeof orientation !== "undefined") {
@@ -115,16 +115,16 @@ const Another = () => {
     }
   }
 
-  const displayIMG = (event) => {
-    if (event.target.files && event.target.files[0]) {
-      const url = URL.createObjectURL(event.target.files[0]);
-      // setsrc(url);
-      console.log(event.target.files[0]);
-      //uploadFileToThreeKit(event.target.files[0])
+//   const displayIMG = (event) => {
+//     if (event.target.files && event.target.files[0]) {
+//       const url = URL.createObjectURL(event.target.files[0]);
+//       // setsrc(url);
+//       console.log(event.target.files[0]);
+//       //uploadFileToThreeKit(event.target.files[0])
 
-      console.log("show", URL.createObjectURL(event.target.files[0]));
-    }
-  };
+//       console.log("show", URL.createObjectURL(event.target.files[0]));
+//     }
+//   }; 
 
   // Getting Blob from base64 then converting it to file
   async function base64ToFile(base64Img) {
