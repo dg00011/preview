@@ -41,36 +41,36 @@ const Another = () => {
           var x = 0;
           var y = 0;
           ctx.save();
-          if (orientation == 2) {
+          if (orientation === 2) {
             x = -canvas.width;
             ctx.scale(-1, 1);
-          } else if (orientation == 3) {
+          } else if (orientation === 3) {
             x = -canvas.width;
             y = -canvas.height;
             ctx.scale(-1, -1);
-          } else if (orientation == 4) {
+          } else if (orientation === 4) {
             y = -canvas.height;
             ctx.scale(1, -1);
-          } else if (orientation == 5) {
+          } else if (orientation === 5) {
             canvas.width = image.height;
             canvas.height = image.width;
             ctx.translate(canvas.width, canvas.height / canvas.width);
             ctx.rotate(Math.PI / 2);
             y = -canvas.width;
             ctx.scale(1, -1);
-          } else if (orientation == 6) {
+          } else if (orientation === 6) {
             canvas.width = image.height;
             canvas.height = image.width;
             ctx.translate(canvas.width, canvas.height / canvas.width);
             ctx.rotate(Math.PI / 2);
-          } else if (orientation == 7) {
+          } else if (orientation === 7) {
             canvas.width = image.height;
             canvas.height = image.width;
             ctx.translate(canvas.width, canvas.height / canvas.width);
             ctx.rotate(Math.PI / 2);
             x = -canvas.height;
             ctx.scale(-1, 1);
-          } else if (orientation == 8) {
+          } else if (orientation === 8) {
             canvas.width = image.height;
             canvas.height = image.width;
             ctx.translate(canvas.width, canvas.height / canvas.width);
