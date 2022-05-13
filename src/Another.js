@@ -32,8 +32,8 @@ const Another = () => {
         console.log(exif)
         var image = new Image();
         image.onload = function () {
-           // var orientation = exif["0th"][piexif.ImageIFD?.Orientation];
-          var orientation =6;
+            var orientation = exif["0th"][piexif.ImageIFD?.Orientation];
+          //var orientation =6;
            console.log(orientation);
           var canvas = document.createElement("canvas");
           canvas.width = image.width;
@@ -236,7 +236,7 @@ const Another = () => {
         go to the link
       </a>
       <div>
-        changed 5
+        changed 6
         <br />
         You can choose multiple files
         <br />
