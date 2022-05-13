@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { piexif } from "piexifjs";
 
 const Another = () => {
+  const [src, setsrc] = useState();
   // function postJpeg (binStr) {
   //     var array = [];
   //     for (var p=0; p<data.length; p++) {
@@ -19,6 +20,12 @@ const Another = () => {
     var files = evt.target.files;
     var previewDiv = document.getElementById("preview");
     console.log(previewDiv);
+
+    if (evt.target.files && evt.target.files[0]) {
+      const url = URL.createObjectURL(evt.target.files[0]);
+      setsrc(url);
+    }
+
     for (var i = 0; i < files.length; i++) {
       var file = files[i];
       if (!file.type.match("image/jpeg.*")) {
@@ -29,12 +36,13 @@ const Another = () => {
       reader.onload = function (e) {
         var exif = piexif.load(e.target.result);
 
-        console.log(exif)
+        console.log(exif);
         var image = new Image();
         image.onload = function () {
-            var orientation = exif["0th"][piexif.ImageIFD?.Orientation];
+          var orientation = exif["0th"][piexif.ImageIFD?.Orientation];
           //var orientation =6;
-           console.log(orientation);
+          console.log('orientation',orientation);
+
           var canvas = document.createElement("canvas");
           canvas.width = image.width;
           canvas.height = image.height;
@@ -56,7 +64,7 @@ const Another = () => {
             canvas.width = image.height;
             canvas.height = image.width;
             ctx.translate(canvas.width, canvas.height / canvas.width);
-            ctx.rotate(Math.PI /2);
+            ctx.rotate(Math.PI / 2);
             y = -canvas.width;
             ctx.scale(1, -1);
           } else if (orientation === 6) {
@@ -64,9 +72,9 @@ const Another = () => {
             canvas.height = image.width;
             ctx.translate(canvas.width, canvas.height / canvas.width);
             //console.log(canvas.width, canvas.height / canvas.width,Math.PI / 2)
-            console.log(Math.PI / 2 ,45 * Math.PI / 180  )
-            
-            ctx.rotate(Math.PI / 2);
+            console.log(Math.PI / 2, (45 * Math.PI) / 180);
+
+            ctx.rotate(60 * Math.PI / 180);
           } else if (orientation === 7) {
             canvas.width = image.height;
             canvas.height = image.width;
@@ -82,11 +90,12 @@ const Another = () => {
             x = -canvas.height;
             y = -canvas.width;
             ctx.scale(-1, -1);
+            console.log("8888888");
           }
           ctx.drawImage(image, x, y);
           ctx.restore();
 
-         // var dataURL = canvas.toDataURL("image/jpeg", 1.0);
+          // var dataURL = canvas.toDataURL("image/jpeg", 1.0);
           //var jpegBinary = atob(dataURL.split(",")[1]);
 
           // restore exif(remove orientation value)
@@ -99,7 +108,7 @@ const Another = () => {
           var div = document.getElementById("div");
           div.append(canvas);
           const link = canvas.toDataURL();
-        //   console.log(link);
+          //   console.log(link);
 
           //uploadFileToThreeKit(link);
           base64ToFile(link);
@@ -119,16 +128,16 @@ const Another = () => {
     }
   }
 
-//   const displayIMG = (event) => {
-//     if (event.target.files && event.target.files[0]) {
-//       const url = URL.createObjectURL(event.target.files[0]);
-//       // setsrc(url);
-//       console.log(event.target.files[0]);
-//       //uploadFileToThreeKit(event.target.files[0])
+  //   const displayIMG = (event) => {
+  //     if (event.target.files && event.target.files[0]) {
+  //       const url = URL.createObjectURL(event.target.files[0]);
+  //       // setsrc(url);
+  //       console.log(event.target.files[0]);
+  //       //uploadFileToThreeKit(event.target.files[0])
 
-//       console.log("show", URL.createObjectURL(event.target.files[0]));
-//     }
-//   }; 
+  //       console.log("show", URL.createObjectURL(event.target.files[0]));
+  //     }
+  //   };
 
   // Getting Blob from base64 then converting it to file
   async function base64ToFile(base64Img) {
@@ -139,11 +148,9 @@ const Another = () => {
       });
     const imgFile = new File([imgBlob], "thumbnail.png");
     console.log(imgFile);
-    uploadFileToThreeKit(imgFile);
+    //uploadFileToThreeKit(imgFile);
     return imgFile;
   }
-
-
 
   const authToken = "b11be148-7ab1-4442-8738-d6f3f56c0b88"; //Canvas Prints Sandbox localhost
   // const assetId = '73e203fa-0d97-4d92-94b3-6da57f708b73';
@@ -232,9 +239,14 @@ const Another = () => {
 
   return (
     <>
-    <a href="https://google.com" id="assetId">
+      <a href="https://google.com" id="assetId">
         go to the link
       </a>
+
+      <div>
+        <h3>Before</h3>
+        <img src={src} alt="..." style={{ width: "10%" }} />
+      </div>
       <div>
         changed 7
         <br />
@@ -249,10 +261,11 @@ const Another = () => {
         />
         <br />
       </div>
-      <div id="preview"></div>
-      <div id="div"></div>
-
-      
+      <h3>AFTER</h3>
+      <div>
+        <div id="preview"></div>
+        <div id="div"></div>
+      </div>
     </>
   );
 };

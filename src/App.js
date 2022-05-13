@@ -1,5 +1,5 @@
 // import { useState } from "react";
-// import "./App.css";
+ import "./App.css";
 // import { piexif } from "piexifjs";
 import Another from "./Another";
 //import EXIF from "exif-js";
