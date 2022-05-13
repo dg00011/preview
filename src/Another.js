@@ -66,7 +66,7 @@ const Another = () => {
             //console.log(canvas.width, canvas.height / canvas.width,Math.PI / 2)
             console.log(Math.PI / 2 ,45 * Math.PI / 180  )
             
-            ctx.rotate(Math.PI /4);
+            ctx.rotate(Math.PI / 2);
           } else if (orientation === 7) {
             canvas.width = image.height;
             canvas.height = image.width;
