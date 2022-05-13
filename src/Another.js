@@ -62,8 +62,8 @@ const Another = () => {
             canvas.width = image.height;
             canvas.height = image.width;
             ctx.translate(canvas.width, canvas.height / canvas.width);
-            console.log(canvas.width, canvas.height / canvas.width,Math.PI / 2)
-            ctx.rotate(Math.PI / 2);
+            //console.log(canvas.width, canvas.height / canvas.width,Math.PI / 2)
+            ctx.rotate(0);
           } else if (orientation === 7) {
             canvas.width = image.height;
             canvas.height = image.width;
@@ -233,7 +233,7 @@ const Another = () => {
         go to the link
       </a>
       <div>
-        JPEG FILES ONLY
+        changed 1
         <br />
         You can choose multiple files
         <br />
