@@ -63,7 +63,7 @@ const Another = () => {
             canvas.height = image.width;
             ctx.translate(canvas.width, canvas.height / canvas.width);
             //console.log(canvas.width, canvas.height / canvas.width,Math.PI / 2)
-            ctx.rotate(0);
+            ctx.rotate(2*Math.PI );
           } else if (orientation === 7) {
             canvas.width = image.height;
             canvas.height = image.width;
@@ -233,7 +233,7 @@ const Another = () => {
         go to the link
       </a>
       <div>
-        changed 1
+        changed 2
         <br />
         You can choose multiple files
         <br />
